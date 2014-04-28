@@ -12,5 +12,5 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew assemble
+  - ./gradlew assemble --stacktrace
 # build will invoke lint, which throws NPE!
