@@ -1,10 +1,8 @@
 nguage: java
 jdk: oraclejdk7
 before_install:
-    # Install base Android SDK
-    - sudo apt-get update -qq
-    - sudo apt-get install -qq libstdc++6:i386 lib32z1
-    - export COMPONENTS=build-tools-19.0.1,android-19,sysimg-19,extra
-    - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/master/android-sdk-installer | bash /dev/stdin --install=$COMPONENTS
-    - source ~/.android-sdk-installer/env
-    - export TERM=dumb # to get clean gradle output
+	- wget http://services.gradle.org/distributions/gradle-1.10-bin.zip
+	- unzip gradle-1.10-bin.zip
+	- export GRADLE_HOME=$PWD/gradle-1.10
+	- export PATH=$GRADLE_HOME/bin:$PATH
+script: gradle connectedInstrumentTest
